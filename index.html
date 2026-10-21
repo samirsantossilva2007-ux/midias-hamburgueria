@@ -196,8 +196,8 @@ h2{font-family:var(--sign);font-weight:400;font-size:clamp(30px,6vw,46px);line-h
 @media(min-width:760px){.c-card{width:164px}}
 .c-card .pic{aspect-ratio:9/16;border-radius:14px;overflow:hidden;border:3px solid var(--grill);background:var(--line)}
 .c-card img{width:100%;height:100%;object-fit:cover}
-.c-card figcaption{background:var(--grill);color:#fff;font-weight:800;font-size:12.5px;line-height:1.2;text-align:center;padding:6px 8px;border-radius:12px;min-height:2.9em;display:grid;place-items:center;text-wrap:balance}
-.c-row.rev .c-card figcaption{background:var(--ketchup)}
+.c-card figcaption{background:var(--paper);color:var(--ink);border:2px solid var(--grill);font-weight:700;font-size:12.5px;line-height:1.25;letter-spacing:.005em;text-align:center;padding:6px 10px;border-radius:12px;min-height:3.1em;display:grid;place-items:center;text-wrap:balance}
+.c-row.rev .c-card figcaption{border-color:var(--ketchup);color:var(--ketchup-dark)}
 
 /* Onde postar */
 .where{background:var(--cream);padding-top:40px}
@@ -411,10 +411,10 @@ footer .brand{font-family:var(--sign);color:#fff;font-size:20px;margin-bottom:6p
 .modal-card .no{display:inline-block;background:none;border:0;color:var(--muted);text-decoration:underline;margin-top:14px;cursor:pointer;font-family:var(--body);font-size:14px}
 
 /* Janela do upsell (menor e mais direta) */
-.modal-card.up{max-width:360px;padding:24px 18px 18px;max-height:calc(100svh - 32px);overflow-y:auto}
-.up .wait{font-size:42px}
-.up h3{font-size:19px;line-height:1.15;margin:6px 0 2px}
-.up .mini{width:132px;height:auto;margin:2px auto 0;filter:drop-shadow(0 8px 10px rgba(0,0,0,.25))}
+.modal-card.up{max-width:320px;padding:22px 16px 16px;max-height:calc(100svh - 32px);overflow-y:auto}
+.up .wait{font-size:36px}
+.up h3{font-size:17px;line-height:1.15;margin:6px 0 2px}
+.up .mini{width:108px;height:auto;margin:2px auto 0;filter:drop-shadow(0 8px 10px rgba(0,0,0,.25))}
 .up .vs{display:grid;grid-template-columns:1fr 1.15fr;gap:8px;margin:6px 0 12px;align-items:stretch}
 .up .opt{border-radius:14px;padding:10px 8px;font-weight:700;font-size:13px;line-height:1.25;display:grid;gap:2px;align-content:center}
 .up .opt b{font-family:var(--sign);font-weight:400;font-size:22px;line-height:1}
@@ -428,8 +428,8 @@ footer .brand{font-family:var(--sign);color:#fff;font-size:20px;margin-bottom:6p
 .up .plus10 b{color:var(--mustard)}
 .up .price-line{display:flex;align-items:baseline;justify-content:center;gap:10px;margin-bottom:12px}
 .up .price-line s{color:var(--muted);font-weight:700}
-.up .price-line .amount{font-size:44px;margin:0}
-.up .btn{font-size:16px;padding:15px 16px}
+.up .price-line .amount{font-size:38px;margin:0}
+.up .btn{font-size:15px;padding:14px 14px}
 
 /* Revelar ao rolar (só nos blocos principais) */
 .reveal{transform:translateY(22px);transition:transform .7s cubic-bezier(.2,.8,.3,1)}
@@ -829,6 +829,24 @@ footer .brand{font-family:var(--sign);color:#fff;font-size:20px;margin-bottom:6p
 </footer>
 
 
+<!-- Oferta do Premium (abre ao clicar no Plano Básico) -->
+<div class="modal" id="upsell" role="dialog" aria-modal="true" aria-labelledby="upsell-title">
+  <div class="modal-card up">
+    <button class="close" aria-label="Fechar" data-close>×</button>
+    <div class="wait">Espera aí!</div>
+    <h3 id="upsell-title">Leve o Premium por só R$10 a mais</h3>
+    <img class="mini" src="mockup-mini.webp" width="420" height="420" alt="Mídias do Plano Premium">
+    <div class="vs">
+      <div class="opt basic">Básico<b>15</b>mídias<br><s>sem bônus</s></div>
+      <div class="opt prem">Premium<b>+150</b>mídias + 3 bônus</div>
+    </div>
+    <div class="plus10">Por apenas <b>R$10 a mais</b>, você leva 10x mais mídias.</div>
+    <div class="price-line"><s>R$ 24,90</s><span class="amount"><sup>R$</sup>19,90</span></div>
+    <a href="https://checkout.wiven.com.br/checkout/cmv7bjvnk0d2y01ob6rzxue8a?offer=YJ31K7D" data-checkout class="btn red block shine">Quero o Premium por R$19,90</a>
+    <a href="https://checkout.wiven.com.br/checkout/cmv7bnl1u0d9s01obadjx35e8?offer=WGFAYHX" data-checkout class="no">Não, quero só o Básico de R$9,90</a>
+  </div>
+</div>
+
 <!-- Player dos vídeos de exemplo (com som) -->
 <div class="player" id="player" role="dialog" aria-modal="true" aria-label="Vídeos de exemplo">
   <button class="x" aria-label="Fechar vídeo" data-close-player>×</button>
@@ -841,19 +859,6 @@ footer .brand{font-family:var(--sign);color:#fff;font-size:20px;margin-bottom:6p
   </div>
 </div>
 
-<!-- Pop-up de saída -->
-<div class="modal" id="exit" role="dialog" aria-modal="true" aria-labelledby="exit-title">
-  <div class="modal-card">
-    <button class="close" aria-label="Fechar" data-close>×</button>
-    <div class="wait">Espere!</div>
-    <h3 id="exit-title">Oferta relâmpago no Plano Completo</h3>
-    <p>Aproveite o desconto de hoje e leve todas as mídias por apenas</p>
-    <div class="amount"><sup>R$</sup>19,90</div>
-    <div class="once">pagamento único • acesso imediato</div>
-    <a href="https://checkout.wiven.com.br/checkout/cmv7bjvnk0d2y01ob6rzxue8a?offer=YJ31K7D" data-checkout class="btn red block shine">Quero o Completo por R$19,90</a>
-    <button class="no" data-close>Não, obrigado</button>
-  </div>
-</div>
 
 <script>
 /* Links de checkout: ficam direto nos botões (href). O script de UTMs do UTMify repassa as UTMs. */
@@ -864,27 +869,27 @@ footer .brand{font-family:var(--sign);color:#fff;font-size:20px;margin-bottom:6p
    ========================================================= */
 // Cada item: [arquivo, nome que aparece embaixo da imagem]
 var LINHA_1 = [
-  ["midias/cta1.webp","Dia de jogo"],
-  ["midias/cta2.webp","Combo de verão"],
-  ["midias/cta3.webp","Delivery com desconto"],
-  ["midias/cta4.webp","Oferta especial"],
-  ["midias/cta5.webp","2 por 1"],
+  ["midias/cta1.webp","Promoção em dia de jogo"],
+  ["midias/cta2.webp","Combo especial de verão"],
+  ["midias/cta3.webp","Desconto no delivery"],
+  ["midias/cta4.webp","Oferta especial do dia"],
+  ["midias/cta5.webp","Promoção 2 por 1"],
   ["midias/cta6.webp","Promoção relâmpago"],
   ["midias/cta7.webp","Leve mais, pague menos"],
   ["midias/cta8.webp","Hoje tem promoção"],
   ["midias/cta9.webp","Combo do dia"]
 ];
 var LINHA_2 = [
-  ["midias/midia7.webp","Delivery"],
-  ["midias/midia8.webp","Chamar atenção"],
-  ["midias/midia1.webp","Combo com refri"],
-  ["midias/midia6.webp","Promoção"],
-  ["midias/midia4.webp","Redes sociais"],
-  ["midias/midia9.webp","Bastidores"],
-  ["midias/midia3.webp","Cardápio"],
-  ["midias/midia5.webp","Lançamento"],
-  ["midias/midia2.webp","Chamar clientes"],
-  ["midias/midia10.webp","Boas-vindas"]
+  ["midias/midia7.webp","Pedido a caminho"],
+  ["midias/midia8.webp","Vídeo para chamar atenção"],
+  ["midias/midia1.webp","Combo com refrigerante"],
+  ["midias/midia6.webp","Anúncio de promoção"],
+  ["midias/midia4.webp","Engajamento nas redes"],
+  ["midias/midia9.webp","Direto da cozinha"],
+  ["midias/midia3.webp","Apresentação do cardápio"],
+  ["midias/midia5.webp","Lançamento de produto"],
+  ["midias/midia2.webp","Convite para pedir"],
+  ["midias/midia10.webp","Boas-vindas aos clientes"]
 ];
 
 (function(){
@@ -1092,7 +1097,7 @@ var LINHA_2 = [
   var offers = document.getElementById("ofertas");
 
   // ---- Janelas ----
-  var upsell = document.getElementById("upsell"), exit = document.getElementById("exit");
+  var upsell = document.getElementById("upsell");
   var exitShown = false;
   try{ exitShown = sessionStorage.getItem("exitShown") === "1"; }catch(e){}
   function openModal(m){
@@ -1105,18 +1110,8 @@ var LINHA_2 = [
 
   // Clique no Plano Básico → mostra a oferta do Premium por R$19,90
   document.querySelectorAll("[data-upsell]").forEach(function(b){
-    b.addEventListener("click", function(e){ e.preventDefault(); markExit(); openModal(upsell); });
+    b.addEventListener("click", function(e){ e.preventDefault(); openModal(upsell); });
   });
-
-  // Pop-up de saída (uma vez por visita)
-  function openExit(){ if(exitShown || document.querySelector(".modal.open, .player.open")) return; markExit(); openModal(exit); }
-  document.addEventListener("mouseout", function(e){ if(!e.relatedTarget && e.clientY <= 0) openExit(); });
-  var lastY = scrollY, passedOffers = false;
-  addEventListener("scroll", function(){
-    if(offers.getBoundingClientRect().bottom < 0) passedOffers = true;
-    if(passedOffers && lastY - scrollY > 120) openExit();
-    lastY = scrollY;
-  }, {passive:true});
 
   document.querySelectorAll(".modal").forEach(function(m){
     m.addEventListener("click", function(e){ if(e.target === m || e.target.hasAttribute("data-close")) closeModals(); });
