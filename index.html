@@ -171,7 +171,6 @@ h2{font-family:var(--sign);font-weight:400;font-size:clamp(30px,6vw,46px);line-h
 @keyframes ping{0%{transform:scale(.85);opacity:1}100%{transform:scale(1.35);opacity:0}}
 .tile-btn:hover .play{transform:scale(1.08)}
 .tile-btn .sound{display:inline-flex;align-items:center;gap:6px;background:rgba(0,0,0,.45);padding:6px 12px;border-radius:999px}
-.see-examples{margin-top:52px}
 
 /* Player de vídeo (abre com som) */
 .player{position:fixed;inset:0;z-index:110;background:rgba(14,9,8,.9);display:none;place-items:center;padding:16px}
@@ -185,7 +184,9 @@ h2{font-family:var(--sign);font-weight:400;font-size:clamp(30px,6vw,46px);line-h
 .player .x{position:absolute;top:max(14px,env(safe-area-inset-top,0px));right:max(14px,env(safe-area-inset-right,0px));width:44px;height:44px;border-radius:50%;border:0;background:#fff;color:var(--ink);font-size:24px;font-weight:800;cursor:pointer}
 
 /* Carrossel em duas faixas */
-.carousel{margin-top:72px;display:grid;gap:14px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
+.carousel-head{margin-top:52px}
+.carousel-head h2{margin:0 0 18px}
+.carousel{margin-top:0;display:grid;gap:14px;overflow:hidden;-webkit-mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent);mask-image:linear-gradient(90deg,transparent,#000 6%,#000 94%,transparent)}
 .c-row{display:flex;width:max-content;gap:12px;animation:rowL 60s linear infinite}
 .c-row.rev{animation-name:rowR}
 .carousel:hover .c-row{animation-play-state:paused}
@@ -209,9 +210,9 @@ h2{font-family:var(--sign);font-weight:400;font-size:clamp(30px,6vw,46px);line-h
 .channel p{color:var(--muted);font-size:16px}
 
 /* ---------- Painel de perfil (estilo rede social) ---------- */
-.profile-block{margin:64px auto 0;max-width:980px;background:var(--grill);color:#fff;border-radius:32px;padding:44px 22px;display:grid;gap:40px;align-items:center;text-align:left;position:relative;overflow:hidden}
+.profile-block{margin:56px auto 0;max-width:620px;justify-items:center;background:var(--grill);color:#fff;border-radius:32px;padding:44px 22px;display:grid;gap:40px;align-items:center;text-align:left;position:relative;overflow:hidden}
 .profile-block::before{content:"";position:absolute;width:520px;height:520px;right:-160px;top:-160px;border-radius:50%;background:radial-gradient(circle,rgba(200,16,46,.55),transparent 65%);pointer-events:none}
-@media(min-width:880px){.profile-block{grid-template-columns:1fr 1fr;padding:56px 52px}}
+@media(min-width:880px){.profile-block{padding:56px 52px}}
 .profile-copy{position:relative}
 .profile-copy .kicker{color:var(--mustard)}
 .profile-copy h3{font-family:var(--sign);font-weight:400;font-size:clamp(26px,4.6vw,38px);line-height:1.05;margin:10px 0 14px}
@@ -274,11 +275,34 @@ h2{font-family:var(--sign);font-weight:400;font-size:clamp(30px,6vw,46px);line-h
 .illus{position:absolute;bottom:-26px;left:0;right:0;text-align:center;font-size:12px;color:#9C8A84}
 @media(max-width:520px){.toast{font-size:12px;padding:8px 10px}.t1{left:-6px}.t2{right:-6px}.t3{left:-6px}.insights{right:-6px;width:150px}}
 
+
+/* Celular: painel cabe na tela sem cortar */
+.phone-zone{width:100%;max-width:440px}
+@media(max-width:600px){
+  .profile-block{padding:34px 10px 40px;border-radius:24px;margin-top:44px}
+  .phone{width:min(264px,74vw)}
+  .screen{font-size:11px}
+  .toast{font-size:11.5px;padding:7px 9px;gap:6px}
+  .toast i{width:22px;height:22px}
+  .t1{left:0;top:4%}.t2{right:0;top:40%}.t3{left:0;bottom:16%}
+  .insights{right:0;width:136px;padding:10px}
+  .insights .top{font-size:10px}
+  .prof{gap:10px;padding:6px 10px}
+  .avatar{width:54px;height:54px}
+  .stats b{font-size:13px}
+  .stats span{font-size:9.5px}
+  .stats div{padding:0 2px}
+  .highlights{gap:8px;padding:2px 10px 8px;justify-content:space-between}
+  .hl{width:40px;font-size:9.5px}
+  .hl i{width:40px;height:40px}
+  .bars{height:44px}
+}
+
 /* Planos */
 .offers{background:var(--cream);padding-top:40px}
 .offers-head{position:relative;display:inline-block}
 .fries{position:absolute;width:76px;right:-84px;top:-6px}
-@media(max-width:600px){.fries{width:56px;right:-50px;top:-30px}}
+@media(max-width:600px){.fries{width:48px;right:-30px;top:-34px}}
 .fries .fry{transform-box:fill-box;transform-origin:bottom;transform:translateY(40px)}
 .fries.go .fry{animation:fry .6s cubic-bezier(.3,1.6,.5,1) forwards}
 .fries.go .fry:nth-of-type(2){animation-delay:.08s}.fries.go .fry:nth-of-type(3){animation-delay:.16s}
@@ -354,7 +378,7 @@ h2{font-family:var(--sign);font-weight:400;font-size:clamp(30px,6vw,46px);line-h
 .g-box p{font-size:18px;margin-bottom:22px}
 
 /* Rodapé */
-footer{background:var(--grill);color:#BFAea8;text-align:center;padding:34px 16px 110px;font-size:14px}
+footer{background:var(--grill);color:#BFAea8;text-align:center;padding:34px 16px 40px;font-size:14px}
 footer .brand{font-family:var(--sign);color:#fff;font-size:20px;margin-bottom:6px}
 
 /* Barra fixa de compra */
@@ -565,12 +589,11 @@ footer .brand{font-family:var(--sign);color:#fff;font-size:20px;margin-bottom:6p
       </div>
     </div>
 
-    <button class="btn red shine see-examples" data-video="0">
-      <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 4l14 8-14 8z"/></svg>
-      Clique e veja os exemplos
-    </button>
   </div>
 
+  <div class="wrap center carousel-head">
+    <h2>Exemplos de mídias em imagem</h2>
+  </div>
   <!-- Carrossel: as imagens ficam na pasta "midias" e são listadas no script (LINHA_1 e LINHA_2) -->
   <div class="carousel" aria-label="Exemplos de mídias do pack">
     <div class="c-row" data-row="1"></div>
@@ -607,18 +630,6 @@ footer .brand{font-family:var(--sign);color:#fff;font-size:20px;margin-bottom:6p
 
     <!-- Painel de perfil: mostra como o feed fica com as mídias -->
     <div class="profile-block reveal">
-      <div class="profile-copy">
-        <span class="kicker">O seu perfil com o pack</span>
-        <h3>Um feed que dá fome todos os dias</h3>
-        <p>Com mais de 150 mídias, você tem post pronto para a semana inteira e o perfil da sua hamburgueria fica com cara de marca grande.</p>
-        <ul class="checks">
-          <li>Posts prontos para o feed todos os dias</li>
-          <li>Stories de promoção para levar ao pedido</li>
-          <li>Reels que chamam clientes novos para o direct</li>
-        </ul>
-        <a href="#ofertas" class="btn shine">Quero o meu pack</a>
-      </div>
-
       <div class="phone-zone" aria-hidden="true">
         <div class="toast t1"><i style="background:#FFE3E8"><svg width="15" height="15" viewBox="0 0 24 24" fill="#E0245E"><path d="M12 21s-7.5-4.6-9.5-9.2C1 8.2 3.4 4.5 7 4.5c2 0 3.6 1.1 5 2.8 1.4-1.7 3-2.8 5-2.8 3.6 0 6 3.7 4.5 7.3C19.5 16.4 12 21 12 21z"/></svg></i><span>1.284 curtidas<small>no post de hoje</small></span></div>
         <div class="toast t2"><i style="background:#E3F0FF"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#3897F0" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4z"/></svg></i><span>Novo pedido no direct<small>“Quero 2 combos!”</small></span></div>
@@ -817,29 +828,6 @@ footer .brand{font-family:var(--sign);color:#fff;font-size:20px;margin-bottom:6p
   <div>© <span data-year>2026</span> +150 Mídias para Hamburguerias. Todos os direitos reservados.</div>
 </footer>
 
-<!-- Barra fixa de compra -->
-<div class="sticky-cta" aria-hidden="true">
-  <div class="p">A partir de<b>R$ 9,90</b></div>
-  <a href="#ofertas" class="btn" tabindex="-1">Ver planos</a>
-</div>
-
-<!-- Oferta do Premium (abre ao clicar no Plano Básico) -->
-<div class="modal" id="upsell" role="dialog" aria-modal="true" aria-labelledby="upsell-title">
-  <div class="modal-card up">
-    <button class="close" aria-label="Fechar" data-close>×</button>
-    <div class="wait">Espera aí!</div>
-    <h3 id="upsell-title">Leve o Premium por só R$10 a mais</h3>
-    <img class="mini" src="mockup-mini.webp" width="420" height="420" alt="Mídias do Plano Premium">
-    <div class="vs">
-      <div class="opt basic">Básico<b>15</b>mídias<br><s>sem bônus</s></div>
-      <div class="opt prem">Premium<b>+150</b>mídias + 3 bônus</div>
-    </div>
-    <div class="plus10">Por apenas <b>R$10 a mais</b>, você leva 10x mais mídias.</div>
-    <div class="price-line"><s>R$ 24,90</s><span class="amount"><sup>R$</sup>19,90</span></div>
-    <a href="https://checkout.wiven.com.br/checkout/cmv7bjvnk0d2y01ob6rzxue8a?offer=YJ31K7D" data-checkout class="btn red block shine">Quero o Premium por R$19,90</a>
-    <a href="https://checkout.wiven.com.br/checkout/cmv7bnl1u0d9s01obadjx35e8?offer=WGFAYHX" data-checkout class="no">Não, quero só o Básico de R$9,90</a>
-  </div>
-</div>
 
 <!-- Player dos vídeos de exemplo (com som) -->
 <div class="player" id="player" role="dialog" aria-modal="true" aria-label="Vídeos de exemplo">
@@ -1101,13 +1089,7 @@ var LINHA_2 = [
   });
   syncDots();
 
-  // ---- Barra fixa ----
-  var sticky = document.querySelector(".sticky-cta"), offers = document.getElementById("ofertas");
-  function onScroll(){
-    var r = offers.getBoundingClientRect();
-    sticky.classList.toggle("show", scrollY > innerHeight*.9 && !(r.top < innerHeight && r.bottom > 0));
-  }
-  addEventListener("scroll", onScroll, {passive:true}); onScroll();
+  var offers = document.getElementById("ofertas");
 
   // ---- Janelas ----
   var upsell = document.getElementById("upsell"), exit = document.getElementById("exit");
